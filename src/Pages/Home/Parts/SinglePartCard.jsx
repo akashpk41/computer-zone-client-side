@@ -3,7 +3,7 @@ import React from "react";
 const SinglePartCard = ({ part }) => {
   const { id, name, img, price, description, available, minimumOrder } = part;
   return (
-    <div className="md:w-62 border-2 hover:scale-1.5 card  m-2 bg-base-100 shadow-xl">
+    <div className="md:w-62 space-y-2 border-2 hover:scale-1.5 card  m-2 bg-base-100 shadow-xl">
       <figure className="px-10 pt-10 ">
         <img src={img} alt={name} className="rounded-xl w-full " />
       </figure>
@@ -23,7 +23,11 @@ const SinglePartCard = ({ part }) => {
           <h5 className="border-b-2 mt-1  mx-auto border-primary"></h5>
         </h3>
 
-        <h3 data-aos="fade-right" data-aos-duration="800" className="text-base ">
+        <h3
+          data-aos="fade-right"
+          data-aos-duration="800"
+          className="text-base "
+        >
           {" "}
           Available: <span className="text-secondary">{available} </span>{" "}
           <h5 className="border-b-2 mt-1  mx-auto border-primary"></h5>
@@ -37,14 +41,19 @@ const SinglePartCard = ({ part }) => {
         </h3>
 
         <p
-          data-aos="fade-right" data-aos-duration="1100"
+          data-aos="fade-right"
+          data-aos-duration="1100"
           className="text-base font-sans md:text-sm text-gray-700"
         >
           {" "}
           {description.slice(0, 100) + "..."}{" "}
         </p>
-        <div  data-aos="fade-up"
-     data-aos-anchor-placement="top-bottom" data-aos-duration="1500" className="card-actions">
+        <div
+          data-aos="fade-up"
+          data-aos-anchor-placement="top-bottom"
+          data-aos-duration="1500"
+          className="card-actions"
+        >
           <button className="btn btn-primary">Buy Now</button>
         </div>
       </div>
