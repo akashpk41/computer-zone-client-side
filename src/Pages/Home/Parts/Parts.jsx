@@ -14,11 +14,11 @@ const Parts = () => {
     <section className="my-10 md:mx-12 border rounded-md border-success">
       <h1 className="text-2xl text-center font-bold my-3"> All Parts </h1>
 
-    <div className="grid md:grid-cols-3">
-      {parts.slice(0,6).map((part) => (
-        <SinglePartCard key={part.id} part={part} />
-      ))}</div>
-
+      <div className="grid md:grid-cols-3">
+        {parts.slice(0, 6).map((part) => (
+          <SinglePartCard key={part.id} part={part} />
+        ))}
+      </div>
     </section>
   );
 };
