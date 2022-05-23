@@ -1,0 +1,74 @@
+[
+     {
+       "id": 1,
+       "name": "ASUS B560M Motherboard",
+       "img": "https://i.ibb.co/rMKJwXB/motherboard.jpg",
+       "price": 7600,
+       "available": 100,
+       "minimumOrder": 40,
+       "description": "Intel LGA 1200 Socket: Designed to unleash the maximum performance of 11th Gen Intel Core processors"
+     },
+     {
+       "id": 2,
+       "name": "Vengeance RGB RAM",
+       "img": "https://i.ibb.co/S7hGczz/ram.jpg",
+       "price": 2000,
+       "available": 200,
+       "minimumOrder": 90,
+       "description": "High performance DDR4 memory illuminates your system with vivid, animated lighting from ten ultra-bright, individually addressable RGB LEDs per module."
+     },
+     {
+       "id": 3,
+       "name": "Intel Core i7 Processor",
+       "img": "https://i.ibb.co/nr5yhqH/cpu.jpg",
+       "price": 6600,
+       "available": 100,
+       "minimumOrder": 50,
+       "description": "Compatible with Intel 400 series chipset based motherboards.Bus Speed: 8 GT/s"
+     },
+     {
+       "id": 4,
+       "name": "Fiodio Mechanical Keyboard",
+       "img": "https://i.ibb.co/2SS4Hkz/keyboard.jpg",
+       "price": 660,
+       "available": 350,
+       "minimumOrder": 150,
+       "description": "Black Switches - If you’re into fast-paced games such as first-person shooters, linear switches will give you an edge. There is no dome to compress or click to overcome, the keystroke is consistent and smooth that offers unmistakable feedback when pressed."
+     },
+     {
+       "id": 5,
+       "name": "Logitech  Wireless Mouse",
+       "img": "https://i.ibb.co/6ZkpS96/wirless-mouse.jpg",
+       "price": 1050,
+       "available": 500,
+       "minimumOrder": 200,
+       "description": "Easy connections for multiple computers: use with up to three Windows or Mac computers via included Unifying receiver or Bluetooth smart wireless technology"
+     },
+     {
+       "id": 6,
+       "name": "MSI Graphics Card",
+       "img": "https://i.ibb.co/sVDdsHw/graphic-card.jpg",
+       "price": 40500,
+       "available": 50,
+       "minimumOrder": 20,
+       "description": "Chipset: NVIDIA GeForce RTX 3080 LHR Boost Clock: 1815 MHz  Output: DisplayPort x 3 (v1.4) / HDMI x 1  "
+     },
+     {
+       "id": 7,
+       "name": "Seagate 8TB HDDD",
+       "img": "https://i.ibb.co/wdsqZsM/hard-disk.jpg",
+       "price": 2300,
+       "available": 220,
+       "minimumOrder": 90,
+       "description": "IronWolf internal hard drives are the ideal solution for up to 8-bay, multi-user NAS environments craving powerhouse performance"
+     },
+     {
+       "id": 8,
+       "name": "SAMSUNG 34-Inch Monitor",
+       "img": " https://i.ibb.co/R6GF1h8/monitor.jpg",
+       "price": 10900,
+       "available": 130,
+       "minimumOrder": 60,
+       "description": "PERFECT FOR DUAL MONITOR USAGE with powerful multitasking split screen features – PBP/PIP and easy to use embedded split screen software"
+     }
+   ]

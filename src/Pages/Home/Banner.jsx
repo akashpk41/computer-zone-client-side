@@ -4,7 +4,7 @@ import banner from "../../images/banner.jpg";
 const Banner = () => {
   return (
     <header>
-      <div className="hero h-[70vh]" style={{ backgroundImage: ` url(${banner})` }}>
+      <div className="hero  h-[70vh]" style={{ backgroundImage: ` url(${banner})` }}>
         <div className="hero-overlay bg-opacity-80  "></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">

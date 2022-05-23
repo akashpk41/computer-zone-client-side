@@ -1,10 +1,14 @@
-import React from 'react';
+
 import Banner from './Banner';
+import Parts from './Parts/Parts';
 
 const Home = () => {
+
+
      return (
-          <main>
+          <main className='' >
             <Banner />
+            <Parts />
           </main>
      );
 };
