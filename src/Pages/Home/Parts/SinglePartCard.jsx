@@ -1,11 +1,12 @@
+import { ArrowNarrowRightIcon } from "@heroicons/react/solid";
 import React from "react";
 
 const SinglePartCard = ({ part }) => {
   const { id, name, img, price, description, available, minimumOrder } = part;
   return (
-    <div className="md:w-62 space-y-2 border-2 hover:scale-1.5 card  m-2 bg-base-100 shadow-xl">
+    <div className="md:w-62 lg:w-auto space-y-2 border-2 hover:scale-1.5 card  m-2 bg-base-100 shadow-xl">
       <figure className="px-10 pt-10 ">
-        <img src={img} alt={name} className="rounded-xl w-full " />
+        <img src={img} alt={name} className="md:cursor-pointer rounded-xl w-full " />
       </figure>
       <div className="card-body items-center text-center">
         <h2
@@ -54,7 +55,7 @@ const SinglePartCard = ({ part }) => {
           data-aos-duration="1500"
           className="card-actions"
         >
-          <button className="btn btn-primary">Buy Now</button>
+          <button className="btn btn-primary">Buy Now  <ArrowNarrowRightIcon className="h-5 w-5 ml-1 text-gray-900" /> </button>
         </div>
       </div>
     </div>

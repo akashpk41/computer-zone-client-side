@@ -17,7 +17,7 @@ const Parts = () => {
         All Computer Parts{" "}
       </h1>
 
-      <div className="grid md:grid-cols-3">
+      <div className="grid md:grid-cols-3 lg:grid-cols-4 ">
         {parts.slice(0, 6).map((part) => (
           <SinglePartCard key={part.id} part={part} />
         ))}

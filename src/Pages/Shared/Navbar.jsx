@@ -1,3 +1,4 @@
+import { LoginIcon, LogoutIcon } from "@heroicons/react/solid";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
@@ -23,7 +24,7 @@ const navLink = (
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-100  border-b border-primary">
+    <div className="navbar sticky top-0 z-50 bg-base-100  border-b border-primary">
       <div className="navbar-start ">
         <div className="dropdown ">
           <label tabindex="0" className="btn btn-ghost lg:hidden">
@@ -84,12 +85,12 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{navLink}</ul>
       </div>
-      <div className="navbar-end hidden md:block ">
-        <NavLink to="/sign-in" className="btn btn-primary  mx-2 ">
-          Sign In
+      <div className="navbar-end hidden  md:block ">
+        <NavLink to="/sign-in" className="btn px-2 btn-primary  mx-1 ">
+          Sign In <LoginIcon className="h-5 w-5 ml-1 text-gray-900" />
         </NavLink>
-        <NavLink to="/register" className="btn btn-outline btn-primary ">
-          Register
+        <NavLink to="/register" className="btn px-2 btn-outline btn-primary ">
+          Register <LogoutIcon className="h-5 w-5 ml-1 text-gray-900" />
         </NavLink>
       </div>
     </div>

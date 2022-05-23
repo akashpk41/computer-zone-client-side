@@ -4,11 +4,11 @@ import { StarIcon } from "@heroicons/react/solid";
 const SingleReviewCard = ({ review }) => {
   const { name, img, ratings, message } = review;
   return (
-    <div className="card relative md:w-62 m-2 bg-violet-200 text-primary-content">
+    <div className="card  relative md:w-62 m-2 bg-violet-200 text-primary-content">
       <div className="card-body p-3  ">
         <div className=" mx-auto   ">
           <div className="w-16 mask mask-hexagon">
-            <img
+            <img className="md:cursor-pointer"
               src={
                 img ||
                 "https://ttwo.dk/wp-content/uploads/2017/08/person-placeholder.jpg"

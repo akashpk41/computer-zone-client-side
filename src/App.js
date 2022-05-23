@@ -5,6 +5,7 @@ import Navbar from "./Pages/Shared/Navbar";
 import { publicRoute } from "./Routes/PublicRoutes";
 import { useEffect } from "react";
 import PageNotFound from "./Pages/Components/PageNotFound";
+import Footer from "./Pages/Shared/Footer";
 
 function App() {
   useEffect(() => {
@@ -12,7 +13,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <>
       <Navbar />
 
       <Routes>
@@ -32,7 +33,8 @@ function App() {
         {/* page not found */}
         <Route path='*' element={ <PageNotFound /> } />
       </Routes>
-    </div>
+      <Footer />
+    </>
   );
 }
 

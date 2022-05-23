@@ -17,11 +17,10 @@ const Reviews = () => {
         Customer Reviews{" "}
       </h1>
 
-
-      <div className="grid md:grid-cols-3">
-
-     { reviews.map(review => <SingleReviewCard key={review._id} review={review} /> ) }
-
+      <div className="grid md:grid-cols-3 lg:grid-cols-4">
+        {reviews.map((review) => (
+          <SingleReviewCard key={review._id} review={review} />
+        ))}
       </div>
     </section>
   );

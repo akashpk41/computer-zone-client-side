@@ -1,3 +1,4 @@
+import { ArrowNarrowRightIcon } from "@heroicons/react/solid";
 import React from "react";
 import banner from "../../images/banner.jpg";
 
@@ -29,10 +30,12 @@ const Banner = () => {
             </p>
             <button
               data-aos="fade-up"
-              data-aos-anchor-placement="top-bottom" data-aos-duration="1300"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-duration="1300"
               className="btn btn-primary"
             >
               Explore Now{" "}
+              <ArrowNarrowRightIcon className="h-5 w-5 ml-1 text-gray-900" />
             </button>
           </div>
         </div>
