@@ -1,12 +1,23 @@
-import { Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./Pages/Shared/Navbar";
+import { publicRoute } from "./Routes/PublicRoutes";
 
 function App() {
   return (
     <div>
       <Navbar />
-      <h1 className="text-primary text-4xl font-bold ">computer</h1>
-      <Routes></Routes>
+
+      <Routes>
+        {/* public routes */}
+
+        {publicRoute.map(({ path, Component }, index) => (
+          <Route key={index} path={path} element={<Component />} />
+        ))}
+
+        {/* private routes */}
+
+        
+      </Routes>
     </div>
   );
 }
