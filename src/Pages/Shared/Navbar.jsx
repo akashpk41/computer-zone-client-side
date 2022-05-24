@@ -6,6 +6,11 @@ import { Link, NavLink } from "react-router-dom";
 import auth from "../../firebase.init";
 import { signOut } from "firebase/auth";
 
+
+const Navbar = () => {
+  const [user] = useAuthState(auth);
+
+
 const navLink = (
   <>
     <li>
@@ -13,10 +18,10 @@ const navLink = (
         Home
       </NavLink>
     </li>
-
+{ user &&
     <li>
       <NavLink to="/dashboard">Dashboard</NavLink>
-    </li>
+    </li>}
     <li>
       <NavLink to="/blogs">Blogs</NavLink>
     </li>
@@ -29,8 +34,6 @@ const navLink = (
   </>
 );
 
-const Navbar = () => {
-  const [user] = useAuthState(auth);
 
   const handleSignOut = () => {
     signOut(auth);

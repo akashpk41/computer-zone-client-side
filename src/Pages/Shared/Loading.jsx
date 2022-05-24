@@ -3,7 +3,7 @@ import { SpinnerDotted } from 'spinners-react';
 
 const Loading = () => {
      return (
-          <SpinnerDotted />
+          <SpinnerDotted size={100} color='red' className="w-48 h-48 text-primary text-center mx-auto"/>
      );
 };
 

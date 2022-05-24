@@ -10,7 +10,7 @@ export const publicRoute = [
   { path: "/", name: "Home", Component: Home },
   { path: "/home", name: "Home", Component: Home },
   { path: "/dashboard", name: "Dashboard", Component: Dashboard },
-  { path: "/blogs", name: "Blogs", Component: Blogs },
+  // { path: "/blogs", name: "Blogs", Component: Blogs },
   { path: "/contact", name: "Contact", Component: Contact },
   { path: "/sign-in", name: "Login", Component: Login },
   { path: "/register", name: "Register", Component: Register },

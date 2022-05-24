@@ -1,11 +1,17 @@
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 import React, { useState } from "react";
+
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
+import auth from "../firebase.init";
 
 const Login = () => {
   const [password, setPassword] = useState(false);
+
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
 
   const {
     register,
@@ -103,6 +109,12 @@ const Login = () => {
                       {errors.password.message}
                     </span>
                   )}
+
+                  {googleError && (
+                    <span className=" bg-red-100 p-2 rounded-md text-bold mt-2 text-red-500">
+                      {googleError.message}
+                    </span>
+                  )}
                 </label>
               </div>
 
@@ -127,7 +139,10 @@ const Login = () => {
             </div>
 
             {/* google login */}
-            <button class="btn w-50 md:w-80 hover:bg-red-100 btn-outline btn-secondary mx-auto mb-3 ">
+            <button
+              onClick={() => signInWithGoogle()}
+              className="btn w-50 md:w-80 hover:bg-red-100 btn-outline btn-secondary mx-auto mb-3 "
+            >
               {" "}
               <img
                 className="w-12"

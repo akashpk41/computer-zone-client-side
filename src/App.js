@@ -6,6 +6,10 @@ import { publicRoute } from "./Routes/PublicRoutes";
 import { useEffect } from "react";
 import PageNotFound from "./Pages/Components/PageNotFound";
 import Footer from "./Pages/Shared/Footer";
+import { privateRoutes } from "./Routes/PrivateRoutes";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import Blogs from "./Pages/Components/Blogs";
+import PrivateRoute from "./Authentication/PrivateRoute";
 
 function App() {
   useEffect(() => {
@@ -25,13 +29,15 @@ function App() {
 
         {/* private routes */}
 
-
-
-
+        <Route element={<PrivateRoute />}>
+          {privateRoutes.map(({ path, Component }, index) => (
+            <Route key={index} path={path} element={<Component />} />
+          ))}
+        </Route>
 
 
         {/* page not found */}
-        <Route path='*' element={ <PageNotFound /> } />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </>
