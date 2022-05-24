@@ -1,39 +1,39 @@
-import { LoginIcon, LogoutIcon } from "@heroicons/react/solid";
+import { ChartBarIcon, LoginIcon, LogoutIcon } from "@heroicons/react/solid";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import auth from "../../firebase.init";
 import { signOut } from "firebase/auth";
 
-
 const Navbar = () => {
   const [user] = useAuthState(auth);
+  const location = useLocation();
+  console.log(location);
 
-
-const navLink = (
-  <>
-    <li>
-      <NavLink to="/home" className="">
-        Home
-      </NavLink>
-    </li>
-{ user &&
-    <li>
-      <NavLink to="/dashboard">Dashboard</NavLink>
-    </li>}
-    <li>
-      <NavLink to="/blogs">Blogs</NavLink>
-    </li>
-    <li>
-      <NavLink to="/contact">Contact Us</NavLink>
-    </li>
-    <li>
-      <NavLink to="/my-portfolio">Portfolio</NavLink>
-    </li>
-  </>
-);
-
+  const navLink = (
+    <>
+      <li>
+        <NavLink to="/home" className="">
+          Home
+        </NavLink>
+      </li>
+      {user && (
+        <li>
+          <NavLink to="/dashboard">Dashboard</NavLink>
+        </li>
+      )}
+      <li>
+        <NavLink to="/blogs">Blogs</NavLink>
+      </li>
+      <li>
+        <NavLink to="/contact">Contact Us</NavLink>
+      </li>
+      <li>
+        <NavLink to="/my-portfolio">Portfolio</NavLink>
+      </li>
+    </>
+  );
 
   const handleSignOut = () => {
     signOut(auth);
@@ -120,6 +120,18 @@ const navLink = (
           COMPUTER ZONE
         </Link>
       </div>
+
+      <div className="navbar-end">
+        {location.pathname === "/dashboard" && (
+          <label
+            for="open-sidebar"
+            class="btn btn-outline btn-primary drawer-button lg:hidden"
+          >
+            <ChartBarIcon className="h-5 w-5 ml-1 text-gray-900" />
+          </label>
+        )}
+      </div>
+
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{navLink}</ul>
       </div>

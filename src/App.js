@@ -35,6 +35,21 @@ function App() {
           ))}
         </Route>
 
+        <Route element={<PrivateRoute />}>
+          {privateRoutes.map(({ path, Component }, index) => (
+            <Route key={index} path={path} element={<Component />} />
+          ))}
+        </Route>
+
+        <Route
+          path="/blogs"
+          element={
+            <PrivateRoute>
+              <Blogs />
+            </PrivateRoute>
+          }
+        />
+
         {/* page not found */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
