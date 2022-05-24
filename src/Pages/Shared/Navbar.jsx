@@ -19,6 +19,9 @@ const navLink = (
     <li>
       <NavLink to="/contact">Contact Us</NavLink>
     </li>
+    <li>
+      <NavLink to="/my-portfolio">Portfolio</NavLink>
+    </li>
   </>
 );
 

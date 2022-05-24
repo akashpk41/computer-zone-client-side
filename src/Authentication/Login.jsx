@@ -1,39 +1,142 @@
-import React from "react";
+import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+import { useForm } from "react-hook-form";
 
 const Login = () => {
+  const [password, setPassword] = useState(false);
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <div
-      class="hero min-h-screen "
+      className="hero min-h-screen "
       style={{
-        backgroundImage: ` url(https://media.istockphoto.com/photos/streaming-live-esport-event-on-computer-at-home-picture-id1190641416?k=20&m=1190641416&s=170667a&w=0&h=9ZP7xe3tPG6bvQkTYXA2VFOLazE_m2rCyIVblXkB86U=)`,
+        backgroundImage: ` url(https://progameguides.com/wp-content/uploads/2021/10/Featured-Hardware-Best-Small-Gaming-Desks-900x506.jpg)`,
       }}
     >
-      <div class="hero-overlay   bg-opacity-90  "></div>
-      <div class="hero-content  shadow-md text-center text-neutral-content">
-        <div class="max-w-md">
-        <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <div class="card-body">
-           <h1 className="text-xl text-center text-primary font-bold "> Please Login</h1>
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text">Email</span>
-          </label>
-          <input type="text" placeholder="email" class="input input-bordered" />
-        </div>
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text">Password</span>
-          </label>
-          <input type="text" placeholder="password" class="input input-bordered" />
-          <label class="label">
-            <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
-          </label>
-        </div>
-        <div class="form-control mt-6">
-          <button class="btn btn-primary">Login</button>
-        </div>
-      </div>
-      </div>
+      <div className="hero-overlay   bg-opacity-90  "></div>
+      <div className="hero-content  my-10 w-full  text-center text-neutral-content">
+        <div className="max-w-md mx-auto w-full">
+          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+              <h1 className="text-xl mb-2 text-center text-primary font-bold ">
+                {" "}
+                Please Login
+              </h1>
+
+              <div className="form-control placeholder-gray-800 w-full max-w-xs">
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="input text-black input-bordered w-full max-w-xs"
+                  {...register("email", {
+                    required: {
+                      value: true,
+                      message: "Email is Required",
+                    },
+                    pattern: {
+                      value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                      message: "Provide a valid Email",
+                    },
+                  })}
+                />
+                <label className="label">
+                  {errors.email?.type === "required" && (
+                    <span className="label-text-alt text-red-500">
+                      {errors.email.message}
+                    </span>
+                  )}
+                  {errors.email?.type === "pattern" && (
+                    <span className="label-text-alt text-red-500">
+                      {errors.email.message}
+                    </span>
+                  )}
+                </label>
+              </div>
+
+              <div className="form-control  relative w-full max-w-xs">
+                <input
+                  type={password ? "text" : "password"}
+                  placeholder="Password"
+                  className="input text-black input-bordered w-full max-w-xs"
+                  {...register("password", {
+                    required: {
+                      value: true,
+                      message: "Password is Required",
+                    },
+                    minLength: {
+                      value: 6,
+                      message: "Must be 6 characters or longer",
+                    },
+                  })}
+                />
+
+                <span
+                  onClick={() => setPassword(!password)}
+                  className="absolute top-3 cursor-pointer  right-2"
+                >
+                  {" "}
+                  {password ? (
+                    <EyeOffIcon className="h-5 w-5 ml-1 text-gray-900" />
+                  ) : (
+                    <EyeIcon className="h-5 w-5 ml-1 text-gray-900" />
+                  )}{" "}
+                </span>
+
+                <label className="label">
+                  {errors.password?.type === "required" && (
+                    <span className="label-text-alt text-red-500">
+                      {errors.password.message}
+                    </span>
+                  )}
+                  {errors.password?.type === "minLength" && (
+                    <span className="label-text-alt text-red-500">
+                      {errors.password.message}
+                    </span>
+                  )}
+                </label>
+              </div>
+
+              <p className="text-gray-800 mt-3 text-sm  text-left">
+                {" "}
+                Don't Have An Account ?{" "}
+                <Link
+                  className="hover:underline text-base text-secondary "
+                  to="/register"
+                >
+                  {" "}
+                  Create New Account
+                </Link>{" "}
+              </p>
+
+              <div className="form-control mt-3">
+                <button className="btn btn-primary">Register</button>
+              </div>
+            </form>
+            <div class="divider w-80 text-black mx-auto -mt-3 border-red-600 ">
+              OR
+            </div>
+
+            {/* google login */}
+            <button class="btn w-50 md:w-80 hover:bg-red-100 btn-outline btn-secondary mx-auto mb-3 ">
+              {" "}
+              <img
+                className="w-12"
+                src="https://i.ibb.co/JsZMn26/google-removebg-preview.png"
+                alt=""
+              />{" "}
+              Sign In With Google{" "}
+            </button>
+          </div>
         </div>
       </div>
     </div>
