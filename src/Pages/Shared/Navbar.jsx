@@ -1,6 +1,9 @@
 import { LoginIcon, LogoutIcon } from "@heroicons/react/solid";
+import { useAuthState } from "react-firebase-hooks/auth";
+
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import auth from "../../firebase.init";
 
 const navLink = (
   <>
@@ -26,6 +29,10 @@ const navLink = (
 );
 
 const Navbar = () => {
+  const [user] = useAuthState(auth);
+
+  const 
+
   return (
     <div className="navbar sticky top-0 z-50 bg-base-100  border-b border-primary">
       <div className="navbar-start ">
@@ -56,11 +63,14 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            <li>
-              <NavLink to="/dashboard" className="text-xl">
-                Dashboard
-              </NavLink>
-            </li>
+            {user && (
+              <li>
+                <NavLink to="/dashboard" className="text-xl">
+                  Dashboard
+                </NavLink>
+              </li>
+            )}
+
             <li>
               <NavLink to="/blogs" className="text-xl">
                 Blogs
@@ -71,14 +81,30 @@ const Navbar = () => {
                 Contact Us
               </NavLink>
             </li>
-            <div className=" mt-3  ">
-              <NavLink to="/sign-in" className="btn btn-primary   mr-2 ">
-                Sign In
-              </NavLink>
-              <NavLink to="/register" className="btn btn-outline btn-primary ">
-                Register
-              </NavLink>
-            </div>
+            {user ? (
+              <>
+                {" "}
+                <button className="btn  btn-primary    mt-3 ">
+                  Sign Out
+                </button>{" "}
+                <p className="text-base mt-3 text-center font-semibold ">
+                  {" "}
+                  {user.displayName}{" "}
+                </p>
+              </>
+            ) : (
+              <div className=" mt-3  ">
+                <NavLink to="/sign-in" className="btn btn-primary   mr-2 ">
+                  Sign In
+                </NavLink>
+                <NavLink
+                  to="/register"
+                  className="btn btn-outline btn-primary "
+                >
+                  Register
+                </NavLink>
+              </div>
+            )}
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl font-mono ">
@@ -88,14 +114,28 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{navLink}</ul>
       </div>
-      <div className="navbar-end hidden  md:block ">
-        <NavLink to="/sign-in" className="btn px-2 btn-primary  mx-1 ">
-          Sign In <LoginIcon className="h-5 w-5 ml-1 text-gray-900" />
-        </NavLink>
-        <NavLink to="/register" className="btn px-2 btn-outline btn-primary ">
-          Register <LogoutIcon className="h-5 w-5 ml-1 text-gray-900" />
-        </NavLink>
-      </div>
+
+      {user ? (
+        <>
+          {" "}
+          <button className="btn btn-primary ml-3 hidden md:block   mr-2 ">
+            Sign Out
+          </button>
+          <p className="text-sm ml-3 font-semibold hidden md:block ">
+            {" "}
+            {user.displayName}{" "}
+          </p>
+        </>
+      ) : (
+        <div className="navbar-end hidden  md:block ">
+          <NavLink to="/sign-in" className="btn px-2 btn-primary  mx-1 ">
+            Sign In <LoginIcon className="h-5 w-5 ml-1 text-gray-900" />
+          </NavLink>
+          <NavLink to="/register" className="btn px-2 btn-outline btn-primary ">
+            Register <LogoutIcon className="h-5 w-5 ml-1 text-gray-900" />
+          </NavLink>
+        </div>
+      )}
     </div>
   );
 };
