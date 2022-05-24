@@ -1,5 +1,7 @@
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 import { useForm } from "react-hook-form";
 
 const Register = () => {
@@ -30,7 +32,7 @@ const Register = () => {
       }}
     >
       <div className="hero-overlay   bg-opacity-90  "></div>
-      <div className="hero-content  w-full  text-center text-neutral-content">
+      <div className="hero-content  my-10 w-full  text-center text-neutral-content">
         <div className="max-w-md mx-auto w-full">
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -166,10 +168,36 @@ const Register = () => {
                 )}
               </div>
 
-              <div className="form-control mt-6">
+              <p className="text-gray-800 mt-3 text-sm  text-left">
+                {" "}
+                Already Have An Account ?{" "}
+                <Link
+                  className="hover:underline text-base text-secondary "
+                  to="/sign-in"
+                >
+                  {" "}
+                  Login
+                </Link>{" "}
+              </p>
+
+              <div className="form-control mt-3">
                 <button className="btn btn-primary">Register</button>
               </div>
             </form>
+            <div class="divider w-80 text-black mx-auto -mt-3 border-red-600 ">
+              OR
+            </div>
+
+            {/* google login */}
+            <button class="btn w-50 md:w-80 hover:bg-red-100 btn-outline btn-secondary mx-auto mb-3 ">
+              {" "}
+              <img
+                className="w-12"
+                src="https://i.ibb.co/JsZMn26/google-removebg-preview.png"
+                alt=""
+              />{" "}
+              Sign In With Google{" "}
+            </button>
           </div>
         </div>
       </div>
