@@ -1,25 +1,47 @@
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
 import auth from "../firebase.init";
+import Loading from "../Pages/Shared/Loading";
 
 const Login = () => {
   const [password, setPassword] = useState(false);
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
 
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location?.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if (googleUser || user) {
+      navigate(from, { replace: true });
+    }
+  }, [googleUser, user, navigate, from]);
 
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  if (googleLoading || loading) {
+    return <Loading />;
+  }
+
   const onSubmit = (data) => {
-    console.log(data);
+    signInWithEmailAndPassword(data.email, data.password);
   };
 
   return (
@@ -113,6 +135,12 @@ const Login = () => {
                   {googleError && (
                     <span className=" bg-red-100 p-2 rounded-md text-bold mt-2 text-red-500">
                       {googleError.message}
+                    </span>
+                  )}
+
+                  {error && (
+                    <span className=" bg-red-100 p-2 rounded-md text-bold mt-2 text-red-500">
+                      {error.message}
                     </span>
                   )}
                 </label>

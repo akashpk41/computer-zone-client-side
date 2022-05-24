@@ -9,6 +9,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
 import auth from "../firebase.init";
+import Loading from "../Pages/Shared/Loading";
 
 const Register = () => {
   const [password, setPassword] = useState(false);
@@ -34,6 +35,10 @@ const Register = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  if (googleLoading || loading) {
+    return <Loading />;
+  }
 
   const onSubmit = async (data) => {
     // ! check if two password not match .
@@ -194,6 +199,12 @@ const Register = () => {
                 {googleError && (
                   <span className=" bg-red-100 p-2 rounded-md text-bold mt-2 text-red-500">
                     {googleError.message}
+                  </span>
+                )}
+
+                {error && (
+                  <span className=" bg-red-100 p-2 rounded-md text-bold mt-2 text-red-500">
+                    {error.message}
                   </span>
                 )}
               </div>
