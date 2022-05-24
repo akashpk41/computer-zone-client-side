@@ -5,4 +5,3 @@ export const privateRoutes = [
   { path: "/dashboard", name: "Dashboard", Component: Dashboard },
   { path: "/blogs", name: "Blogs", Component: Blogs },
 ];
-

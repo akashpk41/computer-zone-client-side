@@ -1,4 +1,9 @@
-import { ChartBarIcon, LoginIcon, LogoutIcon } from "@heroicons/react/solid";
+import {
+  ChartBarIcon,
+  LoginIcon,
+  LogoutIcon,
+  TableIcon,
+} from "@heroicons/react/solid";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import React from "react";
@@ -122,14 +127,12 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end">
-        {location.pathname === "/dashboard" && (
-          <label
-            for="open-sidebar"
-            class="btn btn-outline btn-primary drawer-button lg:hidden"
-          >
-            <ChartBarIcon className="h-5 w-5 ml-1 text-gray-900" />
-          </label>
-        )}
+        <label
+          for="open-sidebar"
+          class="btn btn-outline btn-primary drawer-button lg:hidden"
+        >
+          <TableIcon className="h-5 w-5 ml-1 text-gray-900" />
+        </label>
       </div>
 
       <div className="navbar-center hidden lg:flex">

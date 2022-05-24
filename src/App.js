@@ -10,6 +10,8 @@ import { privateRoutes } from "./Routes/PrivateRoutes";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Blogs from "./Pages/Components/Blogs";
 import PrivateRoute from "./Authentication/PrivateRoute";
+import { dashboardRoutes } from "./Routes/DashboardRoutes";
+import MyOrders from "./Pages/Dashboard/MyOrders";
 
 function App() {
   useEffect(() => {
@@ -35,20 +37,16 @@ function App() {
           ))}
         </Route>
 
-        <Route element={<PrivateRoute />}>
-          {privateRoutes.map(({ path, Component }, index) => (
+        {/* dashboard nested routes */}
+
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route index element={<MyOrders />} />
+
+          {dashboardRoutes.map(({ path, Component }, index) => (
             <Route key={index} path={path} element={<Component />} />
           ))}
+          
         </Route>
-
-        <Route
-          path="/blogs"
-          element={
-            <PrivateRoute>
-              <Blogs />
-            </PrivateRoute>
-          }
-        />
 
         {/* page not found */}
         <Route path="*" element={<PageNotFound />} />
