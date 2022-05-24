@@ -11,7 +11,7 @@ const Parts = () => {
   }, []);
 
   return (
-    <section className="my-10 py-7 md:mx-12 border rounded-md border-success">
+    <section className="my-10 py-7 md:mx-12 border rounded-md border-secondary">
       <h1 className="text-2xl text-center font-bold my-3">
         {" "}
         All Computer Parts{" "}
