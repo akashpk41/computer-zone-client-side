@@ -35,7 +35,6 @@ function App() {
           ))}
         </Route>
 
-
         {/* page not found */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>

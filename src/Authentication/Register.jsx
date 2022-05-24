@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
 import auth from "../firebase.init";
@@ -9,7 +13,21 @@ import auth from "../firebase.init";
 const Register = () => {
   const [password, setPassword] = useState(false);
   const [passwordError, setPasswordError] = useState("");
-  const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile] = useUpdateProfile(auth);
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location?.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if (googleUser || user) {
+      navigate(from, { replace: true });
+    }
+  }, [googleUser, user, navigate, from]);
 
   const {
     register,
@@ -17,22 +35,17 @@ const Register = () => {
     handleSubmit,
   } = useForm();
 
-
-  if(googleUser) {
-    console.log(googleUser);
-    
-  }
-
-
-  const onSubmit = (data) => {
-    console.log(data);
-    console.log(passwordError);
-
+  const onSubmit = async (data) => {
     // ! check if two password not match .
     if (data.password !== data.confirmPassword) {
       return setPasswordError("Your Two Password Not Match.");
     }
     setPasswordError("");
+
+    await createUserWithEmailAndPassword(data.email, data.password, {
+      sendEmailVerification: true,
+    });
+    await updateProfile({ displayName: data.name });
   };
 
   return (
