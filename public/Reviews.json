@@ -1,41 +1,35 @@
 [
      {
-       "_id": 1,
        "ratings": 4 ,
        "name": "Jake Milor",
        "img": "https://pbs.twimg.com/media/BduTxWnIUAAKT_5.jpg",
        "message": "Computer Zone  Calls responded promptly to my distress call and was out the same day by squeezing me in between appointments. "
      },
      {
-       "_id": 2,
        "ratings": 3 ,
        "name": "Keanu Reeves",
        "img": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZmFjZXxlbnwwfHwwfHw%3D&w=1000&q=80",
        "message": "I don't know much about computers and they explained everything to me about what they were fixing. They fixed it very quickly and without any hassle for me"
      },
      {
-       "_id": 3,
        "ratings": 5 ,
        "name": "Jennifer Syme",
        "img": "https://images.unsplash.com/photo-1542740348-39501cd6e2b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d29tYW58ZW58MHx8MHx8&w=1000&q=80",
        "message": "The company fixed my computer by replacing a graphics card. They took a couple of hours to do the job."
      },
      {
-       "_id": 4,
        "ratings": 3 ,
        "name": "Adrianne Jane",
        "img": "https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MTd8bkFpVWlLQmVUN0V8fGVufDB8fHx8&w=1000&q=80",
        "message": ""
      },
      {
-       "_id": 5,
        "ratings":  5,
        "name": "David Leitch",
        "img": "https://i.dailymail.co.uk/i/pix/2013/08/29/article-2405475-1B8389EE000005DC-718_634x550.jpg",
        "message": ""
      },
      {
-       "_id": 6,
        "ratings": 4 ,
        "name": "Michael James",
        "img": "https://expertphotography.b-cdn.net/wp-content/uploads/2018/05/street-photography-strangers-man-with-sunglasses.jpg",

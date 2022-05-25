@@ -8,7 +8,8 @@ const SingleReviewCard = ({ review }) => {
       <div className="card-body p-3  ">
         <div className=" mx-auto   ">
           <div className="w-16 mask mask-hexagon">
-            <img className="md:cursor-pointer"
+            <img
+              className="md:cursor-pointer"
               src={
                 img ||
                 "https://ttwo.dk/wp-content/uploads/2017/08/person-placeholder.jpg"
