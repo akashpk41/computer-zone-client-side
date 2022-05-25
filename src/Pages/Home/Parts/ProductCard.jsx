@@ -29,20 +29,19 @@ const ProductCard = ({ part }) => {
         <h3 className="text-xl ">
           {" "}
           Price: <span className="text-green-600">{price} &#2547;</span>{" "}
-          <h5 className="border-b-2 mt-1  mx-auto border-primary"></h5>
+
         </h3>
 
         <h3 className="text-base ">
           {" "}
           Available: <span className="text-secondary">{available} </span>{" "}
-          <h5 className="border-b-2 mt-1  mx-auto border-primary"></h5>
+         
         </h3>
 
         <h3 className="text-sm ">
           {" "}
           Min Order Quantity :{" "}
           <span className="text-error">{minimumOrder} </span>{" "}
-          <h5 className="border-b-2 mt-1  mx-auto border-primary"></h5>
         </h3>
 
         <p className="text-base  md:w-96 font-sans md:text-sm text-gray-700">

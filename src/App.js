@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Navbar from "./Pages/Shared/Navbar";
@@ -13,6 +14,9 @@ import PrivateRoute from "./Authentication/PrivateRoute";
 import { dashboardRoutes } from "./Routes/DashboardRoutes";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import AddAReview from "./Pages/Dashboard/AddAReview";
+
+
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   useEffect(() => {
@@ -77,6 +81,7 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
+      <ToastContainer />
     </>
   );
 }

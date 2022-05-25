@@ -30,7 +30,7 @@ const Parts = () => {
 
       <div className="grid md:grid-cols-3 lg:grid-cols-4 ">
         {data.data.map((part) => (
-          <SinglePartCard key={part.id} part={part} />
+          <SinglePartCard key={part._id} part={part} />
         ))}
       </div>
     </section>

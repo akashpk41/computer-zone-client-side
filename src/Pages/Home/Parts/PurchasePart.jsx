@@ -27,7 +27,7 @@ const PurchasePart = () => {
     <div className=" md:mx-12 my-10 ">
       <ProductCard part={data.data} />
 
-      <BuyPartsModal  part={data.data}  />
+      <BuyPartsModal part={data.data} />
     </div>
   );
 };
