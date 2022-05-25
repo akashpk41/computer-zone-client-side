@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { SpinnerRoundOutlined } from "spinners-react";
 import axiosPrivate from "../../../API/axiosPrivate";
+import BuyPartsModal from "./BuyPartsModal";
 import ProductCard from "./ProductCard";
 
 const PurchasePart = () => {
@@ -11,7 +12,6 @@ const PurchasePart = () => {
   const { data, isLoading } = useQuery("singleProduct", () =>
     axiosPrivate.get(`/parts/${id}`)
   );
-  console.log(data?.data);
 
   if (isLoading) {
     return (
@@ -26,6 +26,8 @@ const PurchasePart = () => {
   return (
     <div className=" md:mx-12 my-10 ">
       <ProductCard part={data.data} />
+
+      <BuyPartsModal  part={data.data}  />
     </div>
   );
 };
