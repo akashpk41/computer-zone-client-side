@@ -1,15 +1,15 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 import { SpinnerRoundOutlined } from "spinners-react";
+import axiosPrivate from "../../../API/axiosPrivate";
 
 import SinglePartCard from "./SinglePartCard";
-import Loading from "../../../Pages/Shared/Loading";
 
 const Parts = () => {
-  const { data: parts, isLoading } = useQuery("parts", () =>
-    fetch("http://localhost:5000/parts").then((res) => res.json())
+  const { data, isLoading } = useQuery("parts", () =>
+    axiosPrivate.get("/parts")
   );
-  console.log(parts);
+  // console.log(parts);
 
   if (isLoading) {
     return (
@@ -29,7 +29,7 @@ const Parts = () => {
       </h1>
 
       <div className="grid md:grid-cols-3 lg:grid-cols-4 ">
-        {parts?.map((part) => (
+        {data.data.map((part) => (
           <SinglePartCard key={part.id} part={part} />
         ))}
       </div>

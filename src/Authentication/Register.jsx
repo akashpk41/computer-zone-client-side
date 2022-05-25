@@ -20,17 +20,17 @@ const Register = () => {
   const [updateProfile] = useUpdateProfile(auth);
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
-    const [token] = useToken(user)
+  const [token] = useToken(user || googleUser);
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location?.state?.from?.pathname || "/";
 
-  // useEffect(() => {
-  //   if (googleUser || user) {
-  //     navigate(from, { replace: true });
-  //   }
-  // }, [googleUser, user, navigate, from]);
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, navigate, from]);
 
   const {
     register,

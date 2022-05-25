@@ -10,14 +10,15 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import auth from "../firebase.init";
 import Loading from "../Pages/Shared/Loading";
+import useToken from "../Hooks/useToken";
 
 const Login = () => {
   const [password, setPassword] = useState(false);
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
+  const [token] = useToken(user || googleUser);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -25,10 +26,10 @@ const Login = () => {
   const from = location?.state?.from?.pathname || "/";
 
   useEffect(() => {
-    if (googleUser || user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [googleUser, user, navigate, from]);
+  }, [token, navigate, from]);
 
   const {
     register,
@@ -159,7 +160,7 @@ const Login = () => {
               </p>
 
               <div className="form-control mt-3">
-                <button className="btn btn-primary">Register</button>
+                <button className="btn btn-primary">Login</button>
               </div>
             </form>
             <div class="divider w-80 text-black mx-auto -mt-3 border-red-600 ">
