@@ -8,9 +8,6 @@ const PrivateRoute = () => {
   const [user, loading] = useAuthState(auth);
   const location = useLocation();
 
-  if (user) {
-    console.log(user);
-  }
 
   if (loading) {
     return <Loading />;

@@ -12,6 +12,7 @@ import Blogs from "./Pages/Components/Blogs";
 import PrivateRoute from "./Authentication/PrivateRoute";
 import { dashboardRoutes } from "./Routes/DashboardRoutes";
 import MyOrders from "./Pages/Dashboard/MyOrders";
+import AddAReview from "./Pages/Dashboard/AddAReview";
 
 function App() {
   useEffect(() => {
@@ -39,13 +40,37 @@ function App() {
 
         {/* dashboard nested routes */}
 
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route index element={<MyOrders />} />
+        {/* <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        >
+          {/* <Route index element={<MyOrders />} /> */}
 
-          {dashboardRoutes.map(({ path, Component }, index) => (
+        {/* {dashboardRoutes.map(({ path, Component }, index) => (
             <Route key={index} path={path} element={<Component />} />
           ))}
-          
+        </Route> */}
+
+        {/* doctors portal  */}
+        {/* <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute> */}
+        {/* */}
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              {" "}
+              <Dashboard />{" "}
+            </PrivateRoute>
+          }
+        >
+          <Route path="my-orders" element={<MyOrders />} />
+          <Route path="add-a-review" element={<AddAReview />} />
         </Route>
 
         {/* page not found */}

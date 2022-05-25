@@ -14,7 +14,7 @@ import { signOut } from "firebase/auth";
 const Navbar = () => {
   const [user] = useAuthState(auth);
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   const navLink = (
     <>
@@ -126,7 +126,7 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div className="navbar-end">
+      <div className="navbar-end  ">
         <label
           for="open-sidebar"
           class="btn btn-outline btn-primary drawer-button lg:hidden"

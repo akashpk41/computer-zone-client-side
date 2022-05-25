@@ -10,6 +10,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import auth from "../firebase.init";
 import Loading from "../Pages/Shared/Loading";
+import useToken from "../Hooks/useToken";
 
 const Register = () => {
   const [password, setPassword] = useState(false);
@@ -19,16 +20,17 @@ const Register = () => {
   const [updateProfile] = useUpdateProfile(auth);
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
+    const [token] = useToken(user)
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location?.state?.from?.pathname || "/";
 
-  useEffect(() => {
-    if (googleUser || user) {
-      navigate(from, { replace: true });
-    }
-  }, [googleUser, user, navigate, from]);
+  // useEffect(() => {
+  //   if (googleUser || user) {
+  //     navigate(from, { replace: true });
+  //   }
+  // }, [googleUser, user, navigate, from]);
 
   const {
     register,
