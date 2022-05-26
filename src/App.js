@@ -22,6 +22,7 @@ import Register from "./Authentication/Register";
 import MyPortfolio from "./Pages/Components/MyPortfolio";
 import MyProfile from "./Pages/Dashboard/MyProfile";
 import Payment from "./Pages/Dashboard/Payments/Payment";
+import MakeAdmin from "./Pages/AdminDashboard/MakeAdmin";
 
 function App() {
   useEffect(() => {
@@ -67,6 +68,7 @@ function App() {
           <Route path="payment/:id" element={<Payment />} />
           <Route path="add-a-review" element={<AddAReview />} />
           <Route path="my-profile" element={<MyProfile />} />
+          <Route path="make-admin" element={<MakeAdmin />} />
         </Route>
 
         {/* page not found */}

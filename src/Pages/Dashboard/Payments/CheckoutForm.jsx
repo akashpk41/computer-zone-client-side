@@ -1,5 +1,6 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
+import axiosPrivate from "../../../API/axiosPrivate";
 
 const CheckoutForm = ({ order }) => {
   const stripe = useStripe();
@@ -9,7 +10,9 @@ const CheckoutForm = ({ order }) => {
   const [success, setSuccess] = useState("");
   const [transactionId, setTransactionId] = useState("");
 
-  const { price, buyerName, email } = order;
+  const [processing, setProcessing] = useState(false);
+
+  const { _id, price, buyerName, email } = order;
   // console.log();
 
   useEffect(() => {
@@ -51,6 +54,7 @@ const CheckoutForm = ({ order }) => {
     // ! set card error .
     setCardError(error?.message || "");
     setSuccess("");
+    setProcessing(true);
 
     // ? confirm card payment
     const { paymentIntent, error: intentError } =
@@ -66,7 +70,7 @@ const CheckoutForm = ({ order }) => {
 
     if (intentError) {
       setCardError(intentError?.message);
-      // setProcessing(false);
+      setProcessing(false);
     } else {
       setCardError("");
       setTransactionId(paymentIntent.id);
@@ -74,6 +78,23 @@ const CheckoutForm = ({ order }) => {
       setSuccess("Congrats! Your payment is completed.");
 
       //store payment on database
+      const payment = {
+        orderId: _id,
+        transactionId: paymentIntent.id,
+      };
+      fetch(`http://localhost:5000/booking/${_id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(payment),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setProcessing(false);
+          console.log(data);
+        });
     }
   };
 

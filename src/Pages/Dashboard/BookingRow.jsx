@@ -22,7 +22,10 @@ const BookingRow = ({ booking, index }) => {
         )}
 
         {booking && booking.paid && (
-          <button className="btn btn-xs btn-success text-white "> paid </button>
+          <button className="btn btn-xs btn-secondary text-white ">
+            {" "}
+            paid{" "}
+          </button>
         )}
       </td>
       <td>
