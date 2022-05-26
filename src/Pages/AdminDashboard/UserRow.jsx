@@ -1,16 +1,45 @@
 import React from "react";
+import { toast } from "react-toastify";
 
-const UserRow = ({user}) => {
-     const {name, email} = user
+import axiosPrivate from "../../API/axiosPrivate";
+
+const UserRow = ({ user, index, refetch }) => {
+  const { email, role } = user;
+
+  const makeAdmin = () => {
+    (async () => {
+      try {
+        const { data } = await axiosPrivate.put(`/user/admin/${email}`);
+        console.log(data);
+        refetch();
+        toast.success("Successfully Made admin!");
+      } catch (err) {
+        console.log(err.message);
+      }
+    })();
+  };
+
   return (
-
-      <tr>
-        <th>1</th>
-        <td>{name} </td>
-        <td>{email} </td>
-        <td>Blue</td>
-      </tr>
-
+    <tr>
+      <th>{index + 1}</th>
+      <td>{email} </td>
+      <td>
+        {role || (
+          <button
+            onClick={makeAdmin}
+            className="btn btn-xs btn-secondary text-white "
+          >
+            Make Admin
+          </button>
+        )}
+      </td>
+      <td>
+        {" "}
+        <button className="btn btn-xs btn-error text-white ">
+          Remove User
+        </button>
+      </td>
+    </tr>
   );
 };
 

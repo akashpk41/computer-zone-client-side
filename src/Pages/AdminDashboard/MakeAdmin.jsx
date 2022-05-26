@@ -5,7 +5,9 @@ import axiosPrivate from "../../API/axiosPrivate";
 import UserRow from "./UserRow";
 
 const MakeAdmin = () => {
-  const { data, isLoading } = useQuery("user", () => axiosPrivate.get("/user"));
+  const { data, isLoading, refetch } = useQuery("user", () =>
+    axiosPrivate.get("/user")
+  );
 
   if (isLoading) {
     return (
@@ -21,16 +23,22 @@ const MakeAdmin = () => {
     <div class="overflow-x-auto">
       <table class="table w-full">
         <thead>
-          <tr className="text-center">
+          <tr className="">
             <th></th>
-            <th>Name</th>
             <th>Email</th>
-            <th>Favorite Color</th>
+            <th></th>
+
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {data?.data?.map((user) => (
-            <UserRow key={user._id} user={user} />
+          {data?.data?.map((user, index) => (
+            <UserRow
+              key={user._id}
+              refetch={refetch}
+              index={index}
+              user={user}
+            />
           ))}
         </tbody>
       </table>
