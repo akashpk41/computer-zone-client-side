@@ -1,3 +1,4 @@
+import { UploadIcon } from "@heroicons/react/solid";
 import React, { useEffect, useState } from "react";
 
 import { useForm } from "react-hook-form";
@@ -6,14 +7,35 @@ const Register = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
+  const imageStorageKey = "55cb3954f54a76d16c6c0b682d1a78fd";
 
   const onSubmit = (data) => {
-    console.log(data);
+    const image = data.image[0];
+
+    const formData = new FormData()
+      formData.append('image',image)
+    // ! send image to the imgbb server and generate img link .
+    fetch(`https://api.imgbb.com/1/upload?key=${imageStorageKey}`,{
+      method : 'POST',
+      body : formData
+    })
+    .then(res => res.json())
+    .then(result =>   {
+      if(result.success) {
+        const img = result.data.url
+
+
+      }
+    }
+    )
+
+    // reset();
   };
 
   return (
-    <div className=" mx-2 md:mx-12 text-center ">
+    <div className=" mx-2 md:mx-12 my-5 text-center ">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className=" md:w-4/5 md:mx-auto shadow-2xl rounded-md card-body"
@@ -103,6 +125,46 @@ const Register = () => {
             {errors.minimumOrder?.type === "required" && (
               <span className="label-text-alt text-red-500">
                 {errors.minimumOrder.message}
+              </span>
+            )}
+          </label>
+        </div>
+
+        <div className="form-control placeholder-gray-800 w-full max-w-xs">
+          <label htmlFor="image" className="btn btn-outline btn-primary my-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-gray-900 mr-2 "
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+              />
+            </svg>{" "}
+            Upload Image
+          </label>
+
+          <input
+            id="image"
+            type="file"
+            placeholder="Minimum Order Quantity"
+            className="input  hidden w-full max-w-xs"
+            {...register("image", {
+              required: {
+                value: true,
+                message: " Product Image is Required",
+              },
+            })}
+          />
+          <label className="label">
+            {errors.image?.type === "required" && (
+              <span className="label-text-alt text-red-500">
+                {errors.image.message}
               </span>
             )}
           </label>
