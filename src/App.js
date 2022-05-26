@@ -21,6 +21,7 @@ import Login from "./Authentication/Login";
 import Register from "./Authentication/Register";
 import MyPortfolio from "./Pages/Components/MyPortfolio";
 import MyProfile from "./Pages/Dashboard/MyProfile";
+import Payment from "./Pages/Dashboard/Payment";
 
 function App() {
   useEffect(() => {
@@ -63,6 +64,7 @@ function App() {
         >
           <Route index element={<MyOrders />} />
           <Route path="my-orders" element={<MyOrders />} />
+          <Route path="payment/:id" element={<Payment />} />
           <Route path="add-a-review" element={<AddAReview />} />
           <Route path="my-profile" element={<MyProfile />} />
         </Route>

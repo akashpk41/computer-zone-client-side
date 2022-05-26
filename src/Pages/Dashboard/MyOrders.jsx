@@ -8,10 +8,10 @@ import BookingRow from "./BookingRow";
 
 const MyOrders = () => {
   const [user] = useAuthState(auth);
-  const { data: booking, isLoading } = useQuery("booking", () =>
+  const { data, isLoading } = useQuery("booking", () =>
     axiosPrivate.get(`/booking?email=${user.email}`)
   );
-  console.log(booking.data);
+  // console.log(booking.data);
 
   if (isLoading) {
     return (
@@ -47,7 +47,7 @@ const MyOrders = () => {
           <tbody>
             {/* <!-- row 1 --> */}
 
-            {booking.data.map((data, index) => (
+            {data.data.map((data, index) => (
               <BookingRow index={index} key={data._id} booking={data} />
             ))}
           </tbody>

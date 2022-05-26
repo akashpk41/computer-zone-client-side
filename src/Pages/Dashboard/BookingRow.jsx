@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const BookingRow = ({ booking, index }) => {
-  const { name, price, email, phone } = booking;
+  const { _id, name, price, email, phone } = booking;
   return (
     <tr>
       <th>{index + 1}</th>
@@ -10,7 +11,20 @@ const BookingRow = ({ booking, index }) => {
       <td className="text-gray-700">{email} </td>
       <td className="text-gray-700">{phone} </td>
 
-      <td> {booking.paid} </td>
+      <td>
+        {booking && !booking.paid && (
+          <Link
+            to={`/dashboard/payment/${_id}`}
+            className="btn btn-xs text-white btn-success"
+          >
+            Pay
+          </Link>
+        )}
+
+        {booking && booking.paid && (
+          <button className="btn btn-xs btn-success text-white "> paid </button>
+        )}
+      </td>
       <td>
         {" "}
         <button className="btn btn-xs btn-error"> Delete </button>{" "}
