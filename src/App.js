@@ -23,8 +23,18 @@ import MyPortfolio from "./Pages/Components/MyPortfolio";
 import MyProfile from "./Pages/Dashboard/MyProfile";
 import Payment from "./Pages/Dashboard/Payments/Payment";
 import MakeAdmin from "./Pages/AdminDashboard/MakeAdmin";
+import RequireAdmin from "./Authentication/RequireAdmin";
+import AddAProduct from "./Pages/AdminDashboard/AddAProduct";
+import ManageProduct from "./Pages/AdminDashboard/ManageProduct";
+import ManageAllOrders from "./Pages/AdminDashboard/ManageAllOrders";
+import auth from "./firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
+import useAdmin from "./Hooks/useAdmin";
 
 function App() {
+  const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
+
   useEffect(() => {
     AOS.init();
   }, []);
@@ -63,12 +73,51 @@ function App() {
             </PrivateRoute>
           }
         >
-          <Route index element={<MyOrders />} />
+          {admin ? (
+            <Route index element={<MyProfile />} />
+          ) : (
+            <Route index element={<MyOrders />} />
+          )}
+
           <Route path="my-orders" element={<MyOrders />} />
           <Route path="payment/:id" element={<Payment />} />
           <Route path="add-a-review" element={<AddAReview />} />
           <Route path="my-profile" element={<MyProfile />} />
-          <Route path="make-admin" element={<MakeAdmin />} />
+          <Route
+            path="make-admin"
+            element={
+              <RequireAdmin>
+                <MakeAdmin />
+              </RequireAdmin>
+            }
+          />
+
+          <Route
+            path="add-a-product"
+            element={
+              <RequireAdmin>
+                <AddAProduct />
+              </RequireAdmin>
+            }
+          />
+
+          <Route
+            path="manage-product"
+            element={
+              <RequireAdmin>
+                <ManageProduct />
+              </RequireAdmin>
+            }
+          />
+
+          <Route
+            path="manage-all-orders"
+            element={
+              <RequireAdmin>
+                <ManageAllOrders />
+              </RequireAdmin>
+            }
+          />
         </Route>
 
         {/* page not found */}
