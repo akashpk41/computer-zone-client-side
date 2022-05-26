@@ -10,7 +10,7 @@ import PaymentPartBody from "./PaymentPartBody";
 import axiosPrivate from "../../../API/axiosPrivate";
 
 const stripePromise = loadStripe(
-  "pk_test_51L1OYBHxIsHeHwQwHe19hg4GTXtNXNcWeALrHRJOEGg6bRcwJKMyaGmd4F4EJCw6Je8nP5pNfrpdZs9cGXYYrd73006SXG4CFq"
+  "pk_test_51L3Z2yKqOwHYefqRYLaeHILu6yn1EoiuIkznDJzHSbsImNE2ytzQuOPXy3eiwkfnFyNlzAQxHdDTjYXE1P6SE6bi00siBVw0iI"
 );
 
 const Payment = () => {
@@ -37,7 +37,7 @@ const Payment = () => {
       <div className="card my-12 md:w-96 bg-base-100 shadow-xl">
         <div className="card-body">
           <Elements stripe={stripePromise}>
-            <CheckoutForm />
+            <CheckoutForm  order={data.data} />
           </Elements>
         </div>
       </div>
