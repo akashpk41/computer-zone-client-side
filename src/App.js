@@ -21,7 +21,7 @@ import Login from "./Authentication/Login";
 import Register from "./Authentication/Register";
 import MyPortfolio from "./Pages/Components/MyPortfolio";
 import MyProfile from "./Pages/Dashboard/MyProfile";
-import Payment from "./Pages/Dashboard/Payment";
+import Payment from "./Pages/Dashboard/Payments/Payment";
 
 function App() {
   useEffect(() => {

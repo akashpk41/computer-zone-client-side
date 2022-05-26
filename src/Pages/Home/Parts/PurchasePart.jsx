@@ -9,7 +9,7 @@ import ProductCard from "./ProductCard";
 const PurchasePart = () => {
   const { id } = useParams();
 
-  const { data, isLoading } = useQuery("singleProduct", () =>
+  const { data, isLoading } = useQuery(["singleProduct",id], () =>
     axiosPrivate.get(`/parts/${id}`)
   );
 

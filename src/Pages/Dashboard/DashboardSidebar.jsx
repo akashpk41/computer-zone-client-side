@@ -17,7 +17,7 @@ const DashboardSidebar = ({ children }) => {
       <input id="open-sidebar" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content flex flex-col mt-5   ">
         {/* <!-- Page content here --> */}
-
+      <h1  className='text-2xl text-center text-secondary font-semibold mb-3 font-sans'> Welcome To Your Dashboard </h1>
         {children}
       </div>
       <div class="drawer-side border-r border-secondary ">
