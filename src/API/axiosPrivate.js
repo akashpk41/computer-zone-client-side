@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const axiosPrivate = axios.create({ baseURL: "http://localhost:5000" });
+const axiosPrivate = axios.create({ baseURL: `http://localhost:5000` });
 
 // Add a request interceptor
 axiosPrivate.interceptors.request.use(

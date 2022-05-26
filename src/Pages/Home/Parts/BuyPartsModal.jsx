@@ -8,14 +8,14 @@ import auth from "../../../firebase.init";
 const BuyPartsModal = ({ part }) => {
   const [user] = useAuthState(auth);
   const { register, handleSubmit, reset } = useForm();
-  const { name } = part;
-
-
+  const { name, price } = part;
 
   const onSubmit = (data) => {
     const bookingData = {
-      name: user.displayName,
+      name,
+      buyerName: user.displayName,
       email: user.email,
+      price,
       address: data.address,
       phone: data.number,
     };
