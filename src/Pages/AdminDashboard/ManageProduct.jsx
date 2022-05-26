@@ -2,9 +2,13 @@ import React from "react";
 import { useQuery } from "react-query";
 import { SpinnerRoundOutlined } from "spinners-react";
 import axiosPrivate from "../../API/axiosPrivate";
+import ManageProductRow from "./ManageProductRow";
 
 const ManageProduct = () => {
-  const { data, isLoading } = useQuery("user", () => axiosPrivate.get("/user"));
+  const { data, isLoading } = useQuery("parts", () =>
+    axiosPrivate.get("/parts")
+  );
+  // console.log(data.data);
 
   if (isLoading) {
     return (
@@ -15,7 +19,6 @@ const ManageProduct = () => {
       />
     );
   }
-
   return (
     <div className="mx-10  ">
       <h1 className="text-center mb-3 font-semibold text-primary text-xl ">
@@ -28,11 +31,19 @@ const ManageProduct = () => {
           <thead>
             <tr className="text-center">
               <th></th>
+              <th>Image</th>
               <th>Name</th>
-              <th>Email</th>
-              <th>Favorite Color</th>
+              <th>Price</th>
+              <th>Available</th>
+              <th></th>
             </tr>
           </thead>
+
+          <tbody>
+            {data?.data?.map((parts, index) => (
+              <ManageProductRow index={index} key={parts._id} parts={parts} />
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

@@ -50,10 +50,10 @@ const Register = () => {
   };
 
   return (
-    <div className=" mx-2 md:mx-12 my-5 text-center ">
+    <div className=" mx-2 md:mx-12 my-5 justify-center items-center ">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className=" md:w-4/5 md:mx-auto shadow-2xl rounded-md card-body"
+        className=" md:w-4/5 md:mx-auto  shadow-2xl rounded-md card-body"
       >
         <h1 className="text-xl mb-2 text-center text-success font-bold ">
           {" "}
