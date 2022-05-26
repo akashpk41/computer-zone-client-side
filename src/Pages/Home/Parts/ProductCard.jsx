@@ -29,13 +29,11 @@ const ProductCard = ({ part }) => {
         <h3 className="text-xl ">
           {" "}
           Price: <span className="text-green-600">{price} &#2547;</span>{" "}
-
         </h3>
 
         <h3 className="text-base ">
           {" "}
           Available: <span className="text-secondary">{available} </span>{" "}
-         
         </h3>
 
         <h3 className="text-sm ">
