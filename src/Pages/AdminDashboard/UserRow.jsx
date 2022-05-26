@@ -14,7 +14,10 @@ const UserRow = ({ user, index, refetch }) => {
         refetch();
         toast.success("Successfully Made admin!");
       } catch (err) {
-        console.log(err.message);
+        if (err.response.status === 403)
+        {
+          toast.error("Failed To Make Admin");
+        }
       }
     })();
   };

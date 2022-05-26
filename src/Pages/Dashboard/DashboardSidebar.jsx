@@ -9,9 +9,16 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/solid";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import auth from "../../firebase.init";
+import useAdmin from "../../Hooks/useAdmin";
 
 const DashboardSidebar = ({ children }) => {
+  const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user)
+  console.log(admin);
+
   return (
     <div class="drawer drawer-mobile">
       <input id="open-sidebar" type="checkbox" class="drawer-toggle" />
@@ -48,7 +55,7 @@ const DashboardSidebar = ({ children }) => {
 
           {/* only for admin */}
 
-          <li>
+          { admin && <><li>
             <NavLink to="/dashboard/add-a-product">
               {" "}
               <PlusIcon className="h-5 w-5 ml-1 text-gray-900" /> Add a Product
@@ -75,7 +82,7 @@ const DashboardSidebar = ({ children }) => {
               {" "}
               <UserAddIcon className="h-5 w-5 ml-1 text-gray-900" /> Make Admin
             </NavLink>
-          </li>
+          </li></> }
         </ul>
       </div>
     </div>

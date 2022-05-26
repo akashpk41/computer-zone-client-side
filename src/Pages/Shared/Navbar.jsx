@@ -8,12 +8,13 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 import React from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import auth from "../../firebase.init";
 import { signOut } from "firebase/auth";
+import auth from "../../firebase.init";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
-  const location = useLocation();
+
+
   // console.log(location);
 
   const navLink = (
