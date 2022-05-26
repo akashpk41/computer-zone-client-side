@@ -1,15 +1,16 @@
 import React from "react";
 
-const UserRow = () => {
+const UserRow = ({user}) => {
+     const {name, email} = user
   return (
-    <tbody>
+
       <tr>
         <th>1</th>
-        <td>Cy Ganderton</td>
-        <td>Quality Control Specialist</td>
+        <td>{name} </td>
+        <td>{email} </td>
         <td>Blue</td>
       </tr>
-    </tbody>
+
   );
 };
 

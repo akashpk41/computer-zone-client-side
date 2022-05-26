@@ -2,7 +2,6 @@ import React from "react";
 import { useQuery } from "react-query";
 import { SpinnerRoundOutlined } from "spinners-react";
 import axiosPrivate from "../../API/axiosPrivate";
-import UserRow from "./UserRow";
 
 const MakeAdmin = () => {
   const { data, isLoading } = useQuery("user", () => axiosPrivate.get("/user"));
@@ -28,11 +27,6 @@ const MakeAdmin = () => {
             <th>Favorite Color</th>
           </tr>
         </thead>
-        <tbody>
-          {data?.data?.map((user) => (
-            <UserRow key={user._id} user={user} />
-          ))}
-        </tbody>
       </table>
     </div>
   );

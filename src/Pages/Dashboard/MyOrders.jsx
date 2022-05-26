@@ -40,6 +40,7 @@ const MyOrders = () => {
               <th>Price</th>
               <th>Email Address </th>
               <th> Phone </th>
+              <th>  </th>
               <th> Status </th>
               <th></th>
             </tr>

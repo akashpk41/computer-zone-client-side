@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const BookingRow = ({ booking, index }) => {
-  const { _id, name, price, email, phone } = booking;
+  const { _id, name, price, email, phone, transactionId } = booking;
   return (
     <tr>
       <th>{index + 1}</th>
@@ -22,15 +22,34 @@ const BookingRow = ({ booking, index }) => {
         )}
 
         {booking && booking.paid && (
-          <button className="btn btn-xs btn-secondary text-white ">
-            {" "}
-            paid{" "}
-          </button>
+          <div>
+            <button className="btn btn-xs btn-secondary text-white ">
+              paid
+            </button>
+
+            <p className="flex flex-col">
+              Transaction Id:{" "}
+              <span className="text-secondary text-sm font-bold">
+                {transactionId}
+              </span>{" "}
+            </p>
+          </div>
+        )}
+      </td>
+      <td>
+        {booking && booking.status && (
+          <button className="btn btn-xs btn-warning"> {booking.status} </button>
         )}
       </td>
       <td>
         {" "}
-        <button className="btn btn-xs btn-error"> Delete </button>{" "}
+        <button
+          disabled={booking && booking.paid}
+          className="btn btn-xs btn-error"
+        >
+          {" "}
+          Cancel{" "}
+        </button>{" "}
       </td>
     </tr>
   );
