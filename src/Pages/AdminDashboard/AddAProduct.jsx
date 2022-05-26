@@ -1,7 +1,9 @@
-import { UploadIcon } from "@heroicons/react/solid";
-import React, { useEffect, useState } from "react";
+import axiosPrivate from "../../API/axiosPrivate";
 
+import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import Loading from "../Shared/Loading";
 const Register = () => {
   const {
     register,
@@ -13,25 +15,38 @@ const Register = () => {
 
   const onSubmit = (data) => {
     const image = data.image[0];
+    // console.log(data);
 
-    const formData = new FormData()
-      formData.append('image',image)
+    const formData = new FormData();
+    formData.append("image", image);
     // ! send image to the imgbb server and generate img link .
-    fetch(`https://api.imgbb.com/1/upload?key=${imageStorageKey}`,{
-      method : 'POST',
-      body : formData
+    fetch(`https://api.imgbb.com/1/upload?key=${imageStorageKey}`, {
+      method: "POST",
+      body: formData,
     })
-    .then(res => res.json())
-    .then(result =>   {
-      if(result.success) {
-        const img = result.data.url
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          const img = result.data.url;
+          const pcPartsData = {
+            name: data.name,
+            img,
+            price: data.price,
+            available: data.available,
+            minimumOrder: data.minimumOrder,
+            description: data.description,
+          };
 
+          // ? send parts data to the database .
+          axiosPrivate.post("/parts", pcPartsData).then((res) => {
+            if (res.data.acknowledged) {
+              toast.success(" Product Added Successfully! ");
 
-      }
-    }
-    )
-
-    // reset();
+              reset();
+            }
+          });
+        }
+      });
   };
 
   return (
