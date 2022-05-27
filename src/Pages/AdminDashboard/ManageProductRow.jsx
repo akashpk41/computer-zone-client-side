@@ -1,6 +1,6 @@
 import React from "react";
 
-const ManageProductRow = ({ parts, index }) => {
+const ManageProductRow = ({ parts, index, setModal }) => {
   const { img, name, price, available } = parts;
   return (
     <tr>
@@ -16,7 +16,14 @@ const ManageProductRow = ({ parts, index }) => {
       <td className="text-green-700">{price} &#2547; </td>
       <td>{available} </td>
       <td>
-        <button className="btn btn-xs btn-error text-white ">Delete</button>
+        <label
+          onClick={() => setModal(parts)}
+          for="delete-confirm-modal"
+          className="btn btn-xs btn-error text-white"
+        >
+          Delete
+        </label>
+
       </td>
     </tr>
   );

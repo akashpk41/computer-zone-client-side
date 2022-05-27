@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { SpinnerRoundOutlined } from "spinners-react";
 import axiosPrivate from "../../API/axiosPrivate";
+import DeleteConfirmModal from "../Dashboard/DeleteConfirmModal";
 import ManageProductRow from "./ManageProductRow";
 
 const ManageProduct = () => {
+  const [modal, setModal] = useState(null);
   const { data, isLoading } = useQuery("parts", () =>
     axiosPrivate.get("/parts")
   );
@@ -41,11 +43,12 @@ const ManageProduct = () => {
 
           <tbody>
             {data?.data?.map((parts, index) => (
-              <ManageProductRow index={index} key={parts._id} parts={parts} />
+              <ManageProductRow index={index} key={parts._id} parts={parts} setModal={setModal} />
             ))}
           </tbody>
         </table>
       </div>
+      {modal && <DeleteConfirmModal modal={modal} />}
     </div>
   );
 };
