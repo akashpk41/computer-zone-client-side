@@ -15,7 +15,7 @@ const Contact = () => {
             <div class="card-body">
               <h1 className="text-2xl text-center text-black font-bold my-1">
                 {" "}
-                Contact Us{" "}
+                Contact With Us{" "}
               </h1>
               <div class="form-control">
                 <input

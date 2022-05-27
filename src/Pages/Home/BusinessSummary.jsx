@@ -2,7 +2,7 @@ import React from "react";
 
 const BusinessSummary = () => {
   return (
-    <section className="my-10 py-7 justify-center md:mx-12 border rounded-md border-success">
+    <section className="my-10 mx-2 py-7 justify-center md:mx-12 border rounded-md border-secondary">
       <h1 className="text-2xl text-center font-bold my-3"> Why Choose US </h1>
 
       <div
