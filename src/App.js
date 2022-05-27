@@ -30,6 +30,7 @@ import ManageAllOrders from "./Pages/AdminDashboard/ManageAllOrders";
 import auth from "./firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import useAdmin from "./Hooks/useAdmin";
+import Contact from "./Pages/Components/Contact";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -50,6 +51,7 @@ function App() {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/my-portfolio" element={<MyPortfolio />} />
         <Route path="/sign-in" element={<Login />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/register" element={<Register />} />
 
         {/* protected route */}

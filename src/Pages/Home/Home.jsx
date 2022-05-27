@@ -1,4 +1,5 @@
 
+import Contact from '../Components/Contact';
 import Banner from './Banner';
 import BusinessSummary from './BusinessSummary';
 import Parts from './Parts/Parts';
@@ -14,7 +15,7 @@ const Home = () => {
             <Parts />
             <Reviews />
             <BusinessSummary />
-            <TwoExtraSection />
+         <Contact />
             <TwoExtraSection />
           </main>
      );
