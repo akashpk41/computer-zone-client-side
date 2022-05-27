@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { SpinnerRoundOutlined } from "spinners-react";
 import axiosPrivate from "../../API/axiosPrivate";
 import auth from "../../firebase.init";
 import BookingRow from "./BookingRow";
+import DeleteBookingModal from "./Modal/DeleteBookingModal";
+import DeleteProductModal from "./Modal/DeleteProductModal";
 
 const MyOrders = () => {
   const [user] = useAuthState(auth);
-  const { data, isLoading } = useQuery("booking", () =>
+
+  const [modal, setModal] = useState(null);
+  const { data, isLoading, refetch } = useQuery("booking", () =>
     axiosPrivate.get(`/booking?email=${user.email}`)
   );
   // console.log(booking.data);
@@ -40,7 +44,7 @@ const MyOrders = () => {
               <th>Price</th>
               <th>Email Address </th>
               <th> Phone </th>
-              <th>  </th>
+              <th> </th>
               <th> Status </th>
               <th></th>
             </tr>
@@ -49,11 +53,17 @@ const MyOrders = () => {
             {/* <!-- row 1 --> */}
 
             {data.data.map((data, index) => (
-              <BookingRow index={index} key={data._id} booking={data} />
+              <BookingRow
+                index={index}
+                key={data._id}
+                booking={data}
+                setModal={setModal}
+              />
             ))}
           </tbody>
         </table>
       </div>
+      {modal && <DeleteBookingModal refetch={refetch} modal={modal} />}
     </div>
   );
 };

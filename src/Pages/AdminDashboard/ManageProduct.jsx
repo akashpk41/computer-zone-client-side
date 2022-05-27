@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { SpinnerRoundOutlined } from "spinners-react";
 import axiosPrivate from "../../API/axiosPrivate";
-import DeleteConfirmModal from "../Dashboard/DeleteConfirmModal";
+import DeleteProductModal from "../Dashboard/Modal/DeleteProductModal";
 import ManageProductRow from "./ManageProductRow";
 
 const ManageProduct = () => {
   const [modal, setModal] = useState(null);
-  const { data, isLoading } = useQuery("parts", () =>
+  const { data, isLoading, refetch } = useQuery("parts", () =>
     axiosPrivate.get("/parts")
   );
   // console.log(data.data);
@@ -43,12 +43,17 @@ const ManageProduct = () => {
 
           <tbody>
             {data?.data?.map((parts, index) => (
-              <ManageProductRow index={index} key={parts._id} parts={parts} setModal={setModal} />
+              <ManageProductRow
+                index={index}
+                key={parts._id}
+                parts={parts}
+                setModal={setModal}
+              />
             ))}
           </tbody>
         </table>
       </div>
-      {modal && <DeleteConfirmModal modal={modal} />}
+      {modal && <DeleteProductModal refetch={refetch} modal={modal} />}
     </div>
   );
 };

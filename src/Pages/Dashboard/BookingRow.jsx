@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const BookingRow = ({ booking, index }) => {
+const BookingRow = ({ booking, index, setModal }) => {
   const { _id, name, price, email, phone, transactionId } = booking;
   return (
     <tr>
@@ -43,13 +43,15 @@ const BookingRow = ({ booking, index }) => {
       </td>
       <td>
         {" "}
-        <button
+        <label
+          for="delete-confirm-modal"
+          onClick={() => setModal(booking)}
           disabled={booking && booking.paid}
           className="btn btn-xs btn-error"
         >
           {" "}
           Cancel{" "}
-        </button>{" "}
+        </label>{" "}
       </td>
     </tr>
   );

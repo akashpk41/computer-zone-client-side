@@ -23,7 +23,6 @@ const ManageProductRow = ({ parts, index, setModal }) => {
         >
           Delete
         </label>
-
       </td>
     </tr>
   );
