@@ -5,11 +5,11 @@ import axiosPrivate from "../../API/axiosPrivate";
 import AllOrdersRow from "./AllOrdersRow";
 
 const ManageAllOrders = () => {
-  const { data, isLoading } = useQuery("allOrders", () =>
-    axiosPrivate.get("/orders")
+  const { data, isLoading,refetch } = useQuery("allOrders", () =>
+    axiosPrivate.get("/order")
   );
 
-  console.log(data?.data);
+  // console.log(data?.data);
 
   if (isLoading) {
     return (
@@ -37,14 +37,14 @@ const ManageAllOrders = () => {
               <th>Buyer Email</th>
               <th>Status</th>
               <th>
-             
+
               </th>
             </tr>
           </thead>
 
           <tbody>
             {data?.data.map((order, index) => (
-              <AllOrdersRow key={order._id} index={index} order={order} />
+              <AllOrdersRow key={order._id} refetch={refetch} index={index} order={order} />
             ))}
           </tbody>
         </table>
