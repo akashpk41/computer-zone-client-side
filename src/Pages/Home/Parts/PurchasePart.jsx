@@ -7,6 +7,7 @@ import BuyPartsModal from "./BuyPartsModal";
 import ProductCard from "./ProductCard";
 
 const PurchasePart = () => {
+  const [modal, setModal] = useState(null);
   const { id } = useParams();
 
   const { data, isLoading } = useQuery(["singleProduct", id], () =>
@@ -25,9 +26,9 @@ const PurchasePart = () => {
 
   return (
     <div className=" md:mx-12 my-10 ">
-      <ProductCard part={data.data} />
+      <ProductCard setModal={setModal} part={data.data} />
 
-      <BuyPartsModal part={data.data} />
+     { modal && <BuyPartsModal  setModal={setModal} part={data.data} />}
     </div>
   );
 };

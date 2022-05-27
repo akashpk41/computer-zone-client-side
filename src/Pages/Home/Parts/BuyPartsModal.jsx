@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import axiosPrivate from "../../../API/axiosPrivate";
 import auth from "../../../firebase.init";
 
-const BuyPartsModal = ({ part }) => {
+const BuyPartsModal = ({ part, setModal }) => {
   const [user] = useAuthState(auth);
   const { register, handleSubmit, reset } = useForm();
   const { name, price } = part;
@@ -27,6 +27,7 @@ const BuyPartsModal = ({ part }) => {
 
         toast.success("Booking Success!");
         reset();
+        setModal(false);
       } catch (err) {
         console.log(err.message);
       }

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import auth from "../../firebase.init";
+import AddUserInfo from "./AddUserInfo";
 import UpdateProfileModal from "./Modal/UpdateProfileModal";
 
 const MyProfile = () => {
@@ -51,6 +52,7 @@ const MyProfile = () => {
             Phone :
             <span className="font-normal text-gray-800 "> +123456787</span>
           </h3>
+          <AddUserInfo />
 
           <div className="card-actions">
             <label

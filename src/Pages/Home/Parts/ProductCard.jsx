@@ -1,21 +1,26 @@
 import React, { useState } from "react";
 
-const ProductCard = ({ part }) => {
+const ProductCard = ({ part, setModal }) => {
   const [quantityError, setQuantityError] = useState("");
   const [quantity, setQuantity] = useState(0);
   const { _id, name, img, price, description, available, minimumOrder } = part;
 
+  //     cheeck if quantity less than minimum quantity
+
+
+
   // ! get product data and send to the server
   const handlePlaceOrder = () => {
-    //     cheeck if quantity less than minimum quantity
-
     if (quantity < minimumOrder) {
       setQuantityError(`Please order more than ${minimumOrder} products`);
-    } else if (quantity > available) {
-      setQuantityError(`Sorry currently ${quantity} products not available! `);
-    } else {
-      setQuantityError("");
-    }
+   } else if (quantity > available) {
+      setQuantityError(
+       `Sorry currently ${quantity} products not available! `
+     );
+   } else {
+     setQuantityError("");
+   }
+    setModal(true);
   };
 
   return (
@@ -49,7 +54,7 @@ const ProductCard = ({ part }) => {
 
         <input
           type="number"
-          onChange={(e) => setQuantity(e.target.value)}
+          onBlur={(e) => setQuantity(e.target.value)}
           placeholder={`Choose Minimum ${minimumOrder}`}
           className="input input-bordered input-primary w-full max-w-xs"
         />
@@ -60,11 +65,12 @@ const ProductCard = ({ part }) => {
           </span>
         )}
 
-        <div class="card-actions">
+        <div className="card-actions">
           <label
             onClick={handlePlaceOrder}
             for="purchase-part-modal"
-            class="btn modal-button mt-3 mx-auto w-full btn-primary"
+            disabled={quantityError}
+            className="btn modal-button mt-3 mx-auto w-full btn-primary"
           >
             Place Order
           </label>
