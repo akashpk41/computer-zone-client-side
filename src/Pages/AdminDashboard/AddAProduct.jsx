@@ -2,8 +2,6 @@ import axiosPrivate from "../../API/axiosPrivate";
 
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-import Loading from "../Shared/Loading";
 const Register = () => {
   const {
     register,

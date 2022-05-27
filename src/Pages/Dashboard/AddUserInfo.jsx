@@ -1,16 +1,47 @@
 import React, { useEffect, useState } from "react";
+import axiosPrivate from "../../API/axiosPrivate";
+
+import { useAuthState } from "react-firebase-hooks/auth";
+
+import auth from "../../firebase.init";
+
+import { toast } from "react-toastify";
 
 import { useForm } from "react-hook-form";
 
 const AddUserInfo = () => {
+  const [user] = useAuthState(auth);
   const {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const userInfo = {
+      name: user.displayName,
+      email: user.email,
+      country: data.country,
+      education: data.education,
+      linkedIn: data.linkedIn,
+      phone: data.phone,
+    };
+    // console.log(userInfo);
+
+    (async () => {
+      try {
+        const { data } = await axiosPrivate.post(`/user/profile`, userInfo);
+        // console.log(data);
+        if (data.acknowledged) {
+          toast.success(" Information Added! ");
+          reset();
+          window.location.reload();
+        }
+      } catch (err) {
+        console.log(err.message);
+      }
+    })();
   };
 
   return (
