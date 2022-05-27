@@ -2,9 +2,14 @@ import React from "react";
 import { useQuery } from "react-query";
 import { SpinnerRoundOutlined } from "spinners-react";
 import axiosPrivate from "../../API/axiosPrivate";
+import AllOrdersRow from "./AllOrdersRow";
 
 const ManageAllOrders = () => {
-  const { data, isLoading } = useQuery("user", () => axiosPrivate.get("/user"));
+  const { data, isLoading } = useQuery("allOrders", () =>
+    axiosPrivate.get("/orders")
+  );
+
+  console.log(data?.data);
 
   if (isLoading) {
     return (
@@ -26,13 +31,22 @@ const ManageAllOrders = () => {
       <div class="overflow-x-auto">
         <table class="table w-full">
           <thead>
-            <tr className="text-center">
+            <tr className="text-center lg:text-left ">
               <th></th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Favorite Color</th>
+              <th>Product Name</th>
+              <th>Buyer Email</th>
+              <th>Status</th>
+              <th>
+             
+              </th>
             </tr>
           </thead>
+
+          <tbody>
+            {data?.data.map((order, index) => (
+              <AllOrdersRow key={order._id} index={index} order={order} />
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

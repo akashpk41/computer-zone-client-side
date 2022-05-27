@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 import axiosPrivate from "../../API/axiosPrivate";
 
-const UserRow = ({ user, index, refetch }) => {
+const UserRow = ({ user, index, refetch, setModal }) => {
   const { email, role } = user;
 
   const makeAdmin = () => {
@@ -14,8 +14,7 @@ const UserRow = ({ user, index, refetch }) => {
         refetch();
         toast.success("Successfully Made admin!");
       } catch (err) {
-        if (err.response.status === 403)
-        {
+        if (err.response.status === 403) {
           toast.error("Failed To Make Admin");
         }
       }
@@ -37,10 +36,13 @@ const UserRow = ({ user, index, refetch }) => {
         )}
       </td>
       <td>
-        {" "}
-        <button className="btn btn-xs btn-error text-white ">
+        <label
+          onClick={() => setModal(user)}
+          for="delete-confirm-modal"
+          className="btn btn-xs btn-error text-white"
+        >
           Remove User
-        </button>
+        </label>
       </td>
     </tr>
   );

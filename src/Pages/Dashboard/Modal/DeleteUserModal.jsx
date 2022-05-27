@@ -3,14 +3,18 @@ import { toast } from "react-toastify";
 import axiosPrivate from "../../../API/axiosPrivate";
 
 const DeleteUserModal = ({ modal, refetch }) => {
-  const deleteProduct = (id) => {
+  // console.log(modal.email);
+
+  const deleteProduct = (email) => {
+    //   console.log(id);
+
     (async () => {
       try {
-        const { data } = await axiosPrivate.delete(`parts/${id}`);
+        const { data } = await axiosPrivate.delete(`/user/${email}`);
         console.log(data);
 
         if (data.deletedCount > 0) {
-          toast.success("Deleted Successfully!");
+          toast.success("User Removed Successfully!");
           refetch();
         }
       } catch (err) {
@@ -36,7 +40,7 @@ const DeleteUserModal = ({ modal, refetch }) => {
           <div className="modal-action">
             <label
               for="delete-confirm-modal"
-              onClick={() => deleteProduct(modal._id)}
+              onClick={() => deleteProduct(modal.email)}
               className="btn  btn-error text-white "
             >
               Confirm

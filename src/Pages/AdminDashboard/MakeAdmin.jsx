@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { SpinnerRoundOutlined } from "spinners-react";
 import axiosPrivate from "../../API/axiosPrivate";
+import DeleteUserModal from "../Dashboard/Modal/DeleteUserModal";
 import UserRow from "./UserRow";
 
 const MakeAdmin = () => {
+
+  const [modal, setModal] = useState(null);
   const { data, isLoading, refetch } = useQuery("user", () =>
     axiosPrivate.get("/user")
   );
@@ -38,10 +41,13 @@ const MakeAdmin = () => {
               refetch={refetch}
               index={index}
               user={user}
+              setModal={setModal}
             />
           ))}
         </tbody>
       </table>
+
+      {modal && <DeleteUserModal refetch={refetch} modal={modal} />}
     </div>
   );
 };

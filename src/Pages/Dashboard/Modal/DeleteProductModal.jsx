@@ -10,7 +10,7 @@ const DeleteProductModal = ({ modal, refetch }) => {
         console.log(data);
 
         if (data.deletedCount > 0) {
-          toast.success("Deleted Successfully!");
+          toast.success("Product Deleted Successfully!");
           refetch();
         }
       } catch (err) {

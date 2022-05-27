@@ -10,7 +10,7 @@ const DeleteBookingModal = ({ modal, refetch }) => {
         console.log(data);
 
         if (data.deletedCount > 0) {
-          toast.success("Deleted Successfully!");
+          toast.success("Booking Cancel Successfully!");
           refetch();
         }
       } catch (err) {

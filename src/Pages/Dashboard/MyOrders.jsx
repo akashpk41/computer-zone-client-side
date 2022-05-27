@@ -6,7 +6,6 @@ import axiosPrivate from "../../API/axiosPrivate";
 import auth from "../../firebase.init";
 import BookingRow from "./BookingRow";
 import DeleteBookingModal from "./Modal/DeleteBookingModal";
-import DeleteProductModal from "./Modal/DeleteProductModal";
 
 const MyOrders = () => {
   const [user] = useAuthState(auth);
