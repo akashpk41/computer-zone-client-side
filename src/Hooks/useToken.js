@@ -17,7 +17,7 @@ const useToken = (user) => {
   }
 
   const [token, setToken] = useState("");
-  console.log(token);
+  // console.log(token);
 
   return [token];
 };
