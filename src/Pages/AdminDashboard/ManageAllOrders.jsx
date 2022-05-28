@@ -5,7 +5,7 @@ import axiosPrivate from "../../API/axiosPrivate";
 import AllOrdersRow from "./AllOrdersRow";
 
 const ManageAllOrders = () => {
-  const { data, isLoading,refetch } = useQuery("allOrders", () =>
+  const { data, isLoading, refetch } = useQuery("allOrders", () =>
     axiosPrivate.get("/order")
   );
 
@@ -28,23 +28,26 @@ const ManageAllOrders = () => {
         Manage All Orders{" "}
       </h1>
 
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div className="overflow-x-auto">
+        <table className="table w-full">
           <thead>
             <tr className="text-center lg:text-left ">
               <th></th>
               <th>Product Name</th>
               <th>Buyer Email</th>
               <th>Status</th>
-              <th>
-
-              </th>
+              <th></th>
             </tr>
           </thead>
 
           <tbody>
             {data?.data.map((order, index) => (
-              <AllOrdersRow key={order._id} refetch={refetch} index={index} order={order} />
+              <AllOrdersRow
+                key={order._id}
+                refetch={refetch}
+                index={index}
+                order={order}
+              />
             ))}
           </tbody>
         </table>

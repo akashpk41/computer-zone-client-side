@@ -7,28 +7,24 @@ const ProductCard = ({ part, setModal }) => {
 
   //     cheeck if quantity less than minimum quantity
 
-
-
   // ! get product data and send to the server
   const handlePlaceOrder = () => {
     if (quantity < minimumOrder) {
       setQuantityError(`Please order more than ${minimumOrder} products`);
-   } else if (quantity > available) {
-      setQuantityError(
-       `Sorry currently ${quantity} products not available! `
-     );
-   } else {
-     setQuantityError("");
-   }
+    } else if (quantity > available) {
+      setQuantityError(`Sorry currently ${quantity} products not available! `);
+    } else {
+      setQuantityError("");
+    }
     setModal(true);
   };
 
   return (
-    <div class="card max-md-w-96 bg-base-100 shadow-xl">
-      <figure class="px-10 pt-10">
-        <img src={img} alt="Shoes" class="rounded-xl w-70 " />
+    <div className="card max-md-w-96 bg-base-100 shadow-xl">
+      <figure className="px-10 pt-10">
+        <img src={img} alt="Shoes" className="rounded-xl w-70 " />
       </figure>
-      <div class="card-body items-center text-center">
+      <div className="card-body items-center text-center">
         <h2 className="card-title  font-bold "> {name} </h2>
 
         <h3 className="text-xl ">

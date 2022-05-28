@@ -20,9 +20,9 @@ const DashboardSidebar = ({ children }) => {
   // console.log(admin);
 
   return (
-    <div class="drawer drawer-mobile">
-      <input id="open-sidebar" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content flex flex-col mt-5   ">
+    <div className="drawer drawer-mobile">
+      <input id="open-sidebar" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col mt-5   ">
         {/* <!-- Page content here --> */}
         <h1 className="text-2xl text-center text-secondary font-semibold mb-3 font-sans">
           {" "}
@@ -30,9 +30,9 @@ const DashboardSidebar = ({ children }) => {
         </h1>
         {children}
       </div>
-      <div class="drawer-side border-r border-secondary ">
-        <label for="open-sidebar" class="drawer-overlay"></label>
-        <ul class="menu p-4 overflow-y-auto w-60 bg-base-100 text-base-content">
+      <div className="drawer-side border-r border-secondary ">
+        <label for="open-sidebar" className="drawer-overlay"></label>
+        <ul className="menu p-4 overflow-y-auto w-60 bg-base-100 text-base-content">
           {/* <!-- Sidebar content here --> */}
           {admin || (
             <>

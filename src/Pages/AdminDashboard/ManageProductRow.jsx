@@ -6,7 +6,7 @@ const ManageProductRow = ({ parts, index, setModal }) => {
     <tr>
       <th>{index + 1}</th>
       <td>
-        <div class="avatar">
+        <div className="avatar">
           <div className="w-16 mask mask-squircle">
             <img src={img} alt={name} />
           </div>

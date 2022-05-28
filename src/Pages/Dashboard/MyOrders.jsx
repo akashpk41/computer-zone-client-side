@@ -33,8 +33,8 @@ const MyOrders = () => {
         My Orders{" "}
       </h1>
 
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div className="overflow-x-auto">
+        <table className="table w-full">
           {/* <!-- head --> */}
           <thead>
             <tr className="text-center  ">

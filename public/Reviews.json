@@ -18,21 +18,10 @@
        "message": "The company fixed my computer by replacing a graphics card. They took a couple of hours to do the job."
      },
      {
-       "ratings": 3 ,
-       "name": "Adrianne Jane",
-       "img": "https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MTd8bkFpVWlLQmVUN0V8fGVufDB8fHx8&w=1000&q=80",
-       "message": ""
-     },
-     {
-       "ratings":  5,
-       "name": "David Leitch",
-       "img": "https://i.dailymail.co.uk/i/pix/2013/08/29/article-2405475-1B8389EE000005DC-718_634x550.jpg",
-       "message": ""
-     },
-     {
        "ratings": 4 ,
-       "name": "Michael James",
-       "img": "https://expertphotography.b-cdn.net/wp-content/uploads/2018/05/street-photography-strangers-man-with-sunglasses.jpg",
-       "message": ""
+       "name": "Akash PK",
+       "img": "",
+       "message": "Looking to upgrade the video card in your computer? While the swapping-out part is simple, the decision-making leading up to it can be involved. "
      }
+
    ]

@@ -163,7 +163,7 @@ const Login = () => {
                 <button className="btn btn-primary">Login</button>
               </div>
             </form>
-            <div class="divider w-80 text-black mx-auto -mt-3 border-red-600 ">
+            <div className="divider w-80 text-black mx-auto -mt-3 border-red-600 ">
               OR
             </div>
 

@@ -6,7 +6,6 @@ import DeleteUserModal from "../Dashboard/Modal/DeleteUserModal";
 import UserRow from "./UserRow";
 
 const MakeAdmin = () => {
-
   const [modal, setModal] = useState(null);
   const { data, isLoading, refetch } = useQuery("user", () =>
     axiosPrivate.get("/user")
@@ -23,8 +22,8 @@ const MakeAdmin = () => {
   }
 
   return (
-    <div class="overflow-x-auto">
-      <table class="table w-full">
+    <div className="overflow-x-auto">
+      <table className="table w-full">
         <thead>
           <tr className="">
             <th></th>

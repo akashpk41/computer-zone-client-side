@@ -135,7 +135,7 @@ const Navbar = () => {
       <div className="navbar-end  ">
         <label
           for="open-sidebar"
-          class="btn btn-outline btn-primary drawer-button lg:hidden"
+          className="btn btn-outline btn-primary drawer-button lg:hidden"
         >
           <TableIcon className="h-5 w-5 ml-1 text-gray-900" />
         </label>
