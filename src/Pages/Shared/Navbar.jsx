@@ -32,12 +32,14 @@ const Navbar = () => {
       <li>
         <NavLink to="/blogs">Blogs</NavLink>
       </li>
+
       <li>
         <NavLink to="/contact">Contact Us</NavLink>
       </li>
       <li>
         <NavLink to="/my-portfolio">Portfolio</NavLink>
       </li>
+
     </>
   );
 
@@ -93,6 +95,9 @@ const Navbar = () => {
                 Contact Us
               </NavLink>
             </li>
+            <li>
+        <NavLink to="/my-portfolio" className="text-xl">Portfolio</NavLink>
+      </li>
             {user ? (
               <>
                 {" "}
