@@ -2,9 +2,9 @@
 
 ## It's a computer parts manufacturer's website
 
-### Live Site Link :
+### Live Site Link : https://computer-zone-ce82a.web.app/
 
-### Server Side Repository Link : 
+### Server Side Repository Link : https://github.com/programming-hero-web-course1/manufacturer-website-server-side-akashpk41/tree/main
 
 - Technologies used in this website : `React` `Tailwind CSS` `Node JS` `Express JS` `MongoDB` `Firebase` `JWT` `Stripe`
 
